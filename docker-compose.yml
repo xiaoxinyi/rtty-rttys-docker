@@ -1,0 +1,15 @@
+version: '2'
+services:
+  rtty:
+    container_name: zl_rtty
+    build:
+      dockerfile: Dockerfile
+      context: .
+    restart: always
+    tty: true
+    ports:
+      - '23222:22'
+    volumes:
+      - ./supervisord-rtty.conf:/etc/supervisor/conf.d/supervisord-rtty.conf
+
+
