@@ -4,12 +4,23 @@ services:
     container_name: zl_rtty
     build:
       dockerfile: Dockerfile
-      context: .
+      context: rttyc
     restart: always
     tty: true
     ports:
       - '23222:22'
     volumes:
       - ./supervisord-rtty.conf:/etc/supervisor/conf.d/supervisord-rtty.conf
+  rttys:
+    container_name: zl_rttys
+    build:
+      dockerfile: Dockerfile
+      context: rttys
+    restart: always
+    tty: true
+    ports:
+      - '25912:5912'
+    volumes:
+      - ./supervisord-rttys.conf:/etc/supervisor/conf.d/supervisord-rttys.conf
 
 
