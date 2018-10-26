@@ -16,17 +16,18 @@ COPY ./include /usr/local/include
 COPY ./lib /usr/local/lib
 # rtty
 COPY ./rtty /usr/local/bin/
+COPY ./sshpass /usr/local/bin/
 
 RUN chmod a+x /usr/local/bin/rtty
 RUN chmod a+x /usr/local/bin/run-sshd.sh
+RUN chmod a+x /usr/local/bin/sshpass
 
-RUN addgroup -S sxkj
-RUN adduser -S -G sxkj sx
-
-RUN echo "root:root" | chpasswd
-RUN echo "sx:sx" | chpasswd
-
+# RUN addgroup -S sxkj
 USER root
+RUN adduser -D  sxkj
+RUN echo "root:root" | chpasswd
+RUN echo "sxkj:sx" | chpasswd
+
 #RUN echo "root" | passwd --stdin root
 #RUN echo "sx" | passwd --stdin sxkj
 
