@@ -11,6 +11,10 @@ services:
       - '23222:22'
     volumes:
       - ./supervisord-rtty.conf:/etc/supervisor/conf.d/supervisord-rtty.conf
+    environment:
+      - HOST=192.168.199.140
+      - DEVICE=eth0
+      - DESCRIPTION=fuck
   rttys:
     container_name: zl_rttys
     build:
@@ -22,5 +26,6 @@ services:
       - '25912:5912'
     volumes:
       - ./supervisord-rttys.conf:/etc/supervisor/conf.d/supervisord-rttys.conf
+
 
 
